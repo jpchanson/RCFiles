@@ -1,5 +1,5 @@
 #colours
-export PS1='\e[92m\u@\h: \e[31m\W\e[0m\$ '
+export PS1='\[\e[92m\u@\h:\] \[\e[31m\W\e[0m\]\$ '
 export LS_COLORS='rs=0:di=01;32:ln=01;36:mh=00:pi=40;33'
 export TERM=xterm-256color
 
@@ -11,6 +11,7 @@ alias l='ls -CF --color --group-directories-first'
 alias ls='ls -F --color --group-directories-first '
 alias cd='cdl'
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias grep='grep --colour=auto'
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 alias weather='wtr'
 
@@ -84,7 +85,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:/home/hansonj/scripts
+PATH=$PATH:/home/hansonj/Scripts
 PATH=$PATH:/home/hansonj/Tools
 export PATH
 export IGWORK=/var/IGWork
