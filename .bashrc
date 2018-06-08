@@ -1,6 +1,6 @@
 #required dependencies
-source ~/RCFiles/.bash_functions
 source ~/RCFiles/.bash_aliases
+source ~/RCFiles/.bash_functions
 
 #PATH
 PATH=$PATH:/home/hansonj/Scripts
