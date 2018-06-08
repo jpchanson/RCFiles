@@ -8,7 +8,7 @@ PATH=$PATH:/home/hansonj/Tools
 export PATH
 
 #colours
-export PS1='\[\e[92m\u@\h:\] \[\e[31m\W\e[0m\]\$ '
+export PS1='\[\e[92m\]\u@\h: \[\e[31m\]\W\[\e[0m\]> '
 export LS_COLORS='rs=0:di=01;32:ln=01;36:mh=00:pi=40;33'
 export TERM=xterm-256color
 
