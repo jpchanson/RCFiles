@@ -1,6 +1,3 @@
-[user]
-	name = Jan Hanson
-	email = Jan.Hanson@gmail.com
 [push]
 	default = simple
 [http]
@@ -16,5 +13,18 @@
     co = checkout
     br = branch
     st = status
-    hist = log --all --graph  --pretty='format:%C(yellow)[%h]%C(reset) %C(cyan)<%an>%C(reset) %C(auto)%d%C(reset) %C(green){%cd}%C(reset) %n%m %C(yellow)%s%C(reset): %n%b'
-    hists = log --all --graph --decorate --oneline
+    graph = log --all --graph  --pretty='format:%C(yellow bold)[%h]%C(reset) %C(blue bold)<%an>%C(reset) \
+%C(auto)%d%C(reset) %C(magenta bold){%ci}%C(reset) %n%m %C(cyan bold)%s%C(reset): %n%b'
+
+    graphs = log --all --graph --pretty='format:%C(yellow bold)%h%C(reset) %C(magenta bold)%ci\
+%C(reset) %C(cyan bold)%s%C(reset)%C(auto)%d'
+
+    hist =  log --pretty='format:%C(yellow bold)Commit: %H %n%C(blue bold)Author:%C(reset) %an \
+<%ae> %n%C(magenta bold)Date:%C(reset) %ad %n     %C(auto)%d%n%C(cyan bold)%s %n%b'
+
+    hists = log --pretty='format:%C(yellow bold)%h%C(reset) %C(magenta bold)%ai%C(reset) \
+%C(cyan bold)%s%C(auto)%d'
+
+
+    cat = cat-file -p
+    test = "!f() { echo 'test of the bash embedding'; }; f"
