@@ -1,0 +1,20 @@
+[user]
+	name = Jan Hanson
+	email = Jan.Hanson@gmail.com
+[push]
+	default = simple
+[http]
+	sslverify = false
+[notes "rewrite"]
+	amend = true
+	rebase = true
+[notes]
+	rewriteRef = refs/notes/*
+	rewriteMode = concatenate
+
+[alias]
+    co = checkout
+    br = branch
+    st = status
+    hist = log --all --graph  --pretty='format:%C(yellow)[%h]%C(reset) %C(cyan)<%an>%C(reset) %C(auto)%d%C(reset) %C(green){%cd}%C(reset) %n%m %C(yellow)%s%C(reset): %n%b'
+    hists = log --all --graph --decorate --oneline
