@@ -30,4 +30,4 @@ if ! shopt -oq posix; then
     ifExistsSource /etc/bash_completion
 fi
 
-
+umask 022
