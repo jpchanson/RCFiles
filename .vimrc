@@ -36,7 +36,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set cursorline
 hi clear CursorLine
 hi CursorLine term=bold ctermbg=236 guibg=grey40
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""PLUGINS
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -152,6 +151,10 @@ hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF TABLINE
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""VIMDIFF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF VIMDIFF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""BUFTABLINE
 let g:buftabline_show = 1
