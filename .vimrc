@@ -153,7 +153,10 @@ hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF TABLINE
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""VIMDIFF
-
+highlight DiffAdd cterm=none ctermfg=green ctermbg=black gui=none guifg=fg guibg=Blue
+highlight DiffDelete cterm=none ctermfg=red ctermbg=black gui=none guifg=fg guibg=Blue
+highlight DiffChange cterm=none ctermfg=magenta ctermbg=black gui=none guifg=fg guibg=Blue
+highlight DiffText cterm=none ctermfg=cyan ctermbg=black gui=none guifg=bg guibg=White
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF VIMDIFF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""BUFTABLINE
