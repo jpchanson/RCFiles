@@ -83,12 +83,14 @@ nnoremap <F9> : resize -10<CR>
 behave xterm
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""HYBRID LINE NUMBERING
+if !&diff
 :set number relativenumber
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+endif
 
 ""hybrid line number toggle
 function! LineNumToggle()
@@ -153,10 +155,13 @@ hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF TABLINE
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""VIMDIFF
-highlight DiffAdd cterm=none ctermfg=green ctermbg=black gui=none guifg=fg guibg=Blue
-highlight DiffDelete cterm=none ctermfg=red ctermbg=black gui=none guifg=fg guibg=Blue
-highlight DiffChange cterm=none ctermfg=magenta ctermbg=black gui=none guifg=fg guibg=Blue
-highlight DiffText cterm=none ctermfg=cyan ctermbg=black gui=none guifg=bg guibg=White
+if &diff
+    syntax off
+    highlight DiffAdd cterm=none ctermfg=green ctermbg=black gui=none guifg=fg guibg=Blue
+    highlight DiffDelete cterm=none ctermfg=red ctermbg=black gui=none guifg=fg guibg=Blue
+    highlight DiffChange cterm=none ctermfg=cyan ctermbg=black gui=none guifg=fg guibg=Blue
+    highlight DiffText cterm=none ctermfg=black ctermbg=cyan gui=none guifg=bg guibg=White
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ENDOF VIMDIFF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""BUFTABLINE
