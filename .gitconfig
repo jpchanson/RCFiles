@@ -8,11 +8,16 @@
 [notes]
 	rewriteRef = refs/notes/*
 	rewriteMode = concatenate
-
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
 [alias]
     co = checkout
     br = branch
     st = status
+    d = diff
+    dt = difftool
     graph = log --all --graph  --pretty='format:%C(yellow bold)[%h]%C(reset) %C(blue bold)<%an>%C(reset) \
 %C(auto)%d%C(reset) %C(magenta bold){%ci}%C(reset) %n%m %C(cyan bold)%s%C(reset): %n%b'
 
