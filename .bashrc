@@ -5,6 +5,7 @@ source ~/RCFiles/.bash_functions
 #PATH
 PATH=$PATH:/home/hansonj/Scripts
 PATH=$PATH:/home/hansonj/Tools
+PATH=$PATH:/sbin
 export PATH
 
 #colours
