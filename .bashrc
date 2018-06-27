@@ -22,6 +22,7 @@ export IGBUSAREA=fin
 export winhome='/mnt/c/Users/hansonj/'
 export windows='/mnt/c/'
 export DOCKER_HOST='tcp://0.0.0.0:2375'
+export GIT_EDITOR=vim
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
