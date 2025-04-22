@@ -62,6 +62,9 @@ require('packer').startup(function(use)
             "nvim-neotest/nvim-nio"
         } 
     }
+
+    use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
+
     use { "lervag/vimtex" }
     use { 
         "plasticboy/vim-markdown", 
@@ -94,10 +97,6 @@ require('packer').startup(function(use)
 		        { 'MunifTanjim/nui.nvim' }
             }
         }
-    use {'declance/maximize.nvim',
-            config = function() require('maximise').setup() end
-        }
-
     use {
         "nvim-neotest/neotest",
         requires = {
@@ -138,6 +137,18 @@ require 'nvim-treesitter.configs'.setup {
  }
 require('cppman').setup()
 require('wilderConf')
+
+require('tabnine').setup({
+  disable_auto_comment=true,
+  accept_keymap="<Tab>",
+  dismiss_keymap = "<C-]>",
+  debounce_ms = 800,
+  suggestion_color = {gui = "#808080", cterm = 244},
+  exclude_filetypes = {"TelescopePrompt", "NvimTree"},
+  log_file_path = nil, -- absolute path to Tabnine log file
+  ignore_certificate_errors = false,
+})
+
 --require('indent_blankline').setup {
 --    show_current_context = true,
 --    show_current_context_start = true,
