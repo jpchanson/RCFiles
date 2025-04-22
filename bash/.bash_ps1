@@ -9,8 +9,8 @@ R_SEP=""
 L_SEP=""
 L_BR_ICON=""
 R_BR_ICON=""
-   LineLinkTop="${ORANGEBLACK}╭〈${L_SEP}${RESET}"
-LineLinkBottom="${ORANGEBLACK}╰──〉${RESET}"
+   LineLinkTop="${ORANGEFG}╭〈${RESET}"
+LineLinkBottom="${ORANGEFG}╰──〉${RESET}"
 
 # -----------------------------------------------------------------------------
 #                                FUNCTIONS
@@ -18,10 +18,8 @@ LineLinkBottom="${ORANGEBLACK}╰──〉${RESET}"
 function getEnvInfo()
 {
     OUTPUT=""
-    isVenv=false
     if [ -n "$VIRTUAL_ENV" ]; then
         OUTPUT=""
-        isVenv=true
     elif [ -n "$TERMUX_VERSION" ]; then
         OUTPUT=""   
     else
@@ -46,7 +44,6 @@ function gitEnv()
         RESULT+=" $(command git rev-parse --abbrev-ref HEAD)"
         promptComponent 'ORANGE' 'BLACK' "" "$RESULT" "${ORANGEBLACK} " 
     fi
-#    echo "${ORANGEBLACK}$RESULT${RESET}${BLACKFG}${R_SEP}${RESET}"
 }
 
 function promptComponent()
@@ -56,7 +53,7 @@ function promptComponent()
     local LSEP="$3"
     local RSEP="$5"
     local PAYLOAD="$4"
-    echo "${!FGBG}$LSEP${PAYLOAD}${!BGFG}$RSEP$RESET"
+    echo -n "${!FGBG}$LSEP${PAYLOAD}${!BGFG}$RSEP$RESET"
 }
 
 # -----------------------------------------------------------------------------
@@ -75,8 +72,10 @@ function exitCodeComponent()
 function envComponent()
 {
     if [ -n "$VIRTUAL_ENV" ]; then
+        promptComponent 'RED' 'BLACK' "$L_SEP" "" ""
         promptComponent 'BLACK' 'RED' "" "$(getEnvInfo)" "$L_BR_ICON"
     else
+        promptComponent 'ORANGE' 'BLACK' "$L_SEP" "" ""
         promptComponent 'BLACK' 'ORANGE' "" "$(getEnvInfo)" "$L_BR_ICON"
     fi
 }
@@ -99,5 +98,5 @@ function prompter()
     EXIT="$?"
     PS1=""
     PS1+="${LineLinkTop}$(envComponent)$(exitCodeComponent $EXIT)$(pathComponent)$(gitEnv)\n\
-${LineLinkBottom} "
+${LineLinkBottom}"
 }

@@ -1,4 +1,5 @@
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = "darkblue" })
+vim.api.nvim_set_hl(0, 'Normal', {bg="#1e1e1e", fg="#aa9263"})
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg = "darkmagenta" })
 
 vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = "#33cc33" })
 vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = "#9900ff" })
