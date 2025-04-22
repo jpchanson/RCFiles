@@ -1,0 +1,49 @@
+# -----------------------------------------------------------------------------
+#                               Boilerplate
+# -----------------------------------------------------------------------------
+START='\[\033'
+END='\]'
+RESET="$START[0m$END"
+NULLNULL=""
+
+# -----------------------------------------------------------------------------
+#                                 COLOURS
+# -----------------------------------------------------------------------------
+# General naming convention is foregroundBackground
+# GREENs
+BLACKGREEN="$START[$30;42m$END"
+GREENBLACK="$START[32;40m$END"
+WHITEGREEN="$START[38;5;15;42m$END"
+BLACKLGREEN="$START[30;102m$END"
+LGREENBLACK="$START[92;40m$END"
+# YELLOWs
+BLACKYELLOW="$START[30;43m$END"
+YELLOWBLACK="$START[33;40m$END"
+BLACKLYELLOW="$START[30;103m$END"
+LYELLOWBLACK="$START[93;40m$END"
+# MAGENTAs
+BLACKMAGENTA="$START[30;45m$END"
+MAGENTABLACK="$START[35;40m$END"
+BLACKLMAGENTA="$START[30;105m$END"
+LMAGENTABLACK="$START[95;40m$END"
+# CYANs
+BLACKCYAN="$START[30;46m$END"
+CYANBLACK="$START[36;40m$END"
+BLACKLCYAN="$START[30;106m$END"
+LCYANBLACK="$START[96;40m$END"
+# REDs
+BLACKRED="$START[30;41m$END"
+REDBLACK="$START[31;40m$END"
+BLACKLRED="$START[30;101m$END"
+LREDBLACK="$START[91;40m$END"
+# MONOCHROME(ish)
+WHITEGREY="$START[97;100m$END"
+BLACKWHITE="$START[30;107m$END"
+   BLACKFG="$START[30m$END"
+# CYAN and BLUE
+CYANLBLUE="$START[96;104m$END"
+LBLUEBLACK="$START[94;40m$END"
+# ORANGE
+BLACKORANGE="$START[30;48;5;208m$END"
+ORANGEBLACK="$START[38;5;208;40m$END"
+   ORANGEFG="$START[38;5;5;5;5;5m$END"

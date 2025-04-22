@@ -1,0 +1,103 @@
+# -----------------------------------------------------------------------------
+#                            ICONS & SEPERATORS
+# -----------------------------------------------------------------------------
+LOCAL_TERM_ICON="⌂"
+SSH_TERM_ICON=""
+#R_SEP=""
+#L_SEP=""
+R_SEP=""
+L_SEP=""
+L_BR_ICON=""
+R_BR_ICON=""
+   LineLinkTop="${ORANGEBLACK}╭〈${L_SEP}${RESET}"
+LineLinkBottom="${ORANGEBLACK}╰──〉${RESET}"
+
+# -----------------------------------------------------------------------------
+#                                FUNCTIONS
+# -----------------------------------------------------------------------------
+function getEnvInfo()
+{
+    OUTPUT=""
+    isVenv=false
+    if [ -n "$VIRTUAL_ENV" ]; then
+        OUTPUT=""
+        isVenv=true
+    elif [ -n "$TERMUX_VERSION" ]; then
+        OUTPUT=""   
+    else
+        OUTPUT=""
+    fi
+    echo "$OUTPUT \\h"
+}
+
+function gitEnv()
+{
+    local result=""
+    if $(git rev-parse --is-inside-work-tree 2> /dev/null); then
+        remote="$(command git ls-remote --get-url 2> /dev/null)"
+        if [[ "$remote" =~ "github" ]]; then
+            RESULT="   "
+        elif [[ "$remote" =~ "gitlab" ]]; then
+            RESULT="   "
+        else
+            RESULT=" "
+        fi
+
+        RESULT+=" $(command git rev-parse --abbrev-ref HEAD)"
+        promptComponent 'ORANGE' 'BLACK' "" "$RESULT" "${ORANGEBLACK} " 
+    fi
+#    echo "${ORANGEBLACK}$RESULT${RESET}${BLACKFG}${R_SEP}${RESET}"
+}
+
+function promptComponent()
+{
+    local FGBG="$1$2"
+    local BGFG="$2$1"
+    local LSEP="$3"
+    local RSEP="$5"
+    local PAYLOAD="$4"
+    echo "${!FGBG}$LSEP${PAYLOAD}${!BGFG}$RSEP$RESET"
+}
+
+# -----------------------------------------------------------------------------
+#                             PROMPT COMPONENTS
+# -----------------------------------------------------------------------------
+function exitCodeComponent()
+{
+    if [ "$1" -gt 0 ]; then
+        promptComponent 'BLACK' 'RED' "$L_BR_ICON" "  {$1} - \t " '$L_BR_ICON'
+    else
+        promptComponent 'BLACK' 'LGREEN' "$L_BR_ICON" "  \t" '$L_BR_ICON'
+    fi  
+}
+
+
+function envComponent()
+{
+    if [ -n "$VIRTUAL_ENV" ]; then
+        promptComponent 'BLACK' 'RED' "" "$(getEnvInfo)" "$L_BR_ICON"
+    else
+        promptComponent 'BLACK' 'ORANGE' "" "$(getEnvInfo)" "$L_BR_ICON"
+    fi
+}
+
+function pathComponent()
+{
+    promptComponent 'BLACK' 'MAGENTA' "$L_BR_ICON" " \W" "$R_SEP"
+}
+
+function testy()
+{
+    promptComponent 'BLACK' 'YELLOW' "$L_BR_ICON" "test" "$L_BR_ICON"
+}
+
+# -----------------------------------------------------------------------------
+#                                PROMPTER
+# -----------------------------------------------------------------------------
+function prompter()
+{
+    EXIT="$?"
+    PS1=""
+    PS1+="${LineLinkTop}$(envComponent)$(exitCodeComponent $EXIT)$(pathComponent)$(gitEnv)\n\
+${LineLinkBottom} "
+}

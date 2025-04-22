@@ -1,3 +1,10 @@
+[core]
+    editor=vim
+    excludesfile = ~/.gitignore_global
+[user]
+    email = jpchansondev@gmail.com
+    name = Jan Hanson
+
 [push]
 	default = simple
 [http]
@@ -8,11 +15,22 @@
 [notes]
 	rewriteRef = refs/notes/*
 	rewriteMode = concatenate
-
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[merge]
+    tool = vimdiff
+    ff = true
+[mergetool]
+    prompt = false
+    keepBackup = false
 [alias]
     co = checkout
     br = branch
     st = status
+    d = diff
+    dt = difftool
     graph = log --all --graph  --pretty='format:%C(yellow bold)[%h]%C(reset) %C(blue bold)<%an>%C(reset) \
 %C(auto)%d%C(reset) %C(magenta bold){%ci}%C(reset) %n%m %C(cyan bold)%s%C(reset): %n%b'
 
@@ -23,8 +41,15 @@
 <%ae> %n%C(magenta bold)Date:%C(reset) %ad %n     %C(auto)%d%n%C(cyan bold)%s %n%b'
 
     hists = log --pretty='format:%C(yellow bold)%h%C(reset) %C(magenta bold)%ai%C(reset) \
-%C(cyan bold)%s%C(auto)%d'
+        %C(cyan bold)%s%C(auto)%d'
 
+    thishist = "!git log --pretty='format:%C(yellow bold)Commit: %H %n%C(blue bold)Author:%C(reset) %an <%ae> %n%C(magenta bold)Date:%C(reset) %ad %n     %C(auto)%d%n%C(cyan bold)%s %n%b' master..$(git this | tail -1)"
 
-    cat = cat-file -p
-    test = "!f() { echo 'test of the bash embedding'; }; f"
+    this = "!git branch --contains HEAD | sed -e 's/*//g' -e 's/ //g' | tail -1"
+    stat = "!stats () { git diff --stat $(git merge-base HEAD $1); } ; stats"
+    files = "!files () { git diff --color --name-only $(git merge-base HEAD master); } ; files"
+    prlog = "!git log master..$(git this)"
+    numcommits = "!commitsbetween () { git rev-list --no-merges --count $1 ^$2 ; } ; commitsbetween "
+    home = "!git co $(git this)"
+    sub = "! cd $(git rev-parse --show-toplevel) && git submodule foreach git"
+    nukebranch = "! git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
