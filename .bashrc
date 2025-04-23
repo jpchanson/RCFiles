@@ -1,3 +1,5 @@
+BASHRC_VERSION="1.0.0"
+
 #PATH
 PATH=$PATH:~/Scripts/
 PATH=$PATH:~/Tools/
