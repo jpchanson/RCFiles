@@ -16,6 +16,11 @@ source $HOME/RCFiles/bash/.bash_functions
 source $HOME/RCFiles/bash/.bash_ps1
 source $HOME/RCFiles/bash/.bash_aliases
 
+# conditional includes for non standard tools
+if type "fzf" > /dev/null; then
+    source $HOME/RCFiles/bash/.bash_fzf
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -23,6 +28,7 @@ if ! shopt -oq posix; then
     ifExistsSource /usr/share/bash-completion/bash_completion
     ifExistsSource /etc/bash_completion
 fi
+
 
 export LESS_TERMCAP_mb=$'\e[1;31m'
 export LESS_TERMCAP_md=$'\e[1,33m'

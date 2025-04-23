@@ -1,0 +1,47 @@
+# FZF commands and aliases
+
+## General shell
+### kill
+purge() {
+    PID="$(ps -aux | sed 1d | fzf -m | awk '{print $2}')"
+
+    if [ -n "$PID" ]; then
+        echo $PID | xargs kill -${1:-9}
+    fi
+}
+
+### package manager
+#### Package installer
+pkgget() {
+    OS_ID="$(cat /etc/os-release | grep -E "^ID=" | cut -d= -f2 | tr -d '"')"
+
+    case "$OS_ID" in
+        "arch")
+            pacman -Slq | \
+            fzf --multi --height 40% --style full --preview 'pacman -Si {1}' | \
+            xargs -ro sudo pacman -S
+            break
+        ;;
+        *)
+            echo "ERROR: Unrecognised os, exiting" >&2
+            exit 1
+        ;;
+    esac
+}
+#### Package remover
+pkgdel() {
+    OS_ID="$(cat /etc/os-release | grep -E "^ID=" | cut -d= -f2 | tr -d '"')"
+
+    case "$OS_ID" in
+        "arch")
+            pacman -Qq | \
+            fzf --multi --height 40% --style full --preview 'pacman -Qi {1}' | \
+            xargs -ro sudo pacman -Runs
+            break
+        ;;
+        *)
+            echo "ERROR: Unrecognised os, exiting" >&2
+            exit 1
+        ;;
+    esac
+}
